@@ -9,12 +9,15 @@ module.exports.ls = () => {
     });
 };
 
-module.exports.touch = () => {
-
+module.exports.touch = (fName, content) => {
+    fs.writeFile(fName, content, 'utf8', (err) => {
+        if(err || !fName || !content ){throw err;}
+        console.log("File '" + fName + "' with contents of '" + content + "' was successfully created.");
+    });
 };
 
-module.exports.mkdir = () => {
-
+module.exports.mkdir = (path) => {
+    fs.mkdir(path);
 };
 
 /*
