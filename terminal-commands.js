@@ -11,13 +11,16 @@ module.exports.ls = () => {
 
 module.exports.touch = (fName, content) => {
     fs.writeFile(fName, content, 'utf8', (err) => {
-        if(err || !fName || !content ){throw err;}
+        if(err || !fName || !content ){console.error(err);}
         console.log("File '" + fName + "' with contents of '" + content + "' was successfully created.");
     });
 };
 
 module.exports.mkdir = (path) => {
-    fs.mkdir(path);
+    fs.mkdir(('./' + path), (err) => {
+        if (err) { return console.error(err); }
+        console.log("Folder '" + path + "' was successfuly created.")
+    });
 };
 
 /*
